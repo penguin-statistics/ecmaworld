@@ -1,0 +1,43 @@
+{
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "compilerOptions": {
+    "strict": true,
+    "removeComments": true,
+    "baseUrl": "./src",
+    "outDir": "build",
+    "module": "esnext",
+    "target": "es6",
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "sourceMap": true,
+    "allowJs": true,
+    "rootDir": "./",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "importHelpers": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "src/*": [
+        "*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "public"
+  ]
+}
