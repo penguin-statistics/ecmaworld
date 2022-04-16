@@ -1,0 +1,14 @@
+{
+  "home": {
+    "title": "Home"
+  },
+  "report": {
+    "title": "Report"
+  },
+  "result.stages": {
+    "title": "Stages"
+  },
+  "result.items": {
+    "title": "Items"
+  }
+}

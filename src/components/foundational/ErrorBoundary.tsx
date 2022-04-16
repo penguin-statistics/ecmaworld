@@ -1,6 +1,7 @@
 import { Component } from 'react'
+import { WithChildren } from 'types'
 
-export class ErrorBoundary extends Component {
+export class ErrorBoundary extends Component<WithChildren<{}>> {
   state: { error: any }
 
   constructor(props) {

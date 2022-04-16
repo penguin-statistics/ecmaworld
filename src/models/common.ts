@@ -1,19 +1,11 @@
-export interface Existence {
-  CN: ServerExistence
-  US: ServerExistence
-  JP: ServerExistence
-  KR: ServerExistence
-}
+import { SiteLanguages, SiteServers } from './i18n'
 
-export interface ServerExistence {
+export type Existence = Record<SiteServers, ExistenceElement>
+
+export interface ExistenceElement {
   exist: boolean
   openTime?: number
   closeTime?: number
 }
 
-export interface I18nString {
-  zh: string
-  en: string
-  ja: string
-  ko: string
-}
+export type I18nString = Record<SiteLanguages, string>

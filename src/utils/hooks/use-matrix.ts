@@ -1,6 +1,6 @@
 import useSWR from 'swr'
 
-import { MatrixResp } from '../../models/matrix'
+import { MatrixResp } from 'models/matrix'
 
 export const useMatrix = () => {
   const { data, ...rest } = useSWR<MatrixResp>(
@@ -16,17 +16,27 @@ export const useMatrix = () => {
 }
 
 export const useMatrixByItem = (itemId?: string) => {
-  const { data, ...rest } = useMatrix()
+  const { data, ...rest } = useSWR<MatrixResp>(
+    '/api/v3-alpha/dataset/aggregated/global/CN/item/' + itemId,
+    {
+      suspense: true,
+    },
+  )
   return {
-    data: data?.filter((item) => item.itemId === itemId),
+    data: data?.matrix,
     ...rest,
   }
 }
 
 export const useMatrixByStage = (stageId?: string) => {
-  const { data, ...rest } = useMatrix()
+  const { data, ...rest } = useSWR<MatrixResp>(
+    '/api/v3-alpha/dataset/aggregated/global/CN/stage/' + stageId,
+    {
+      suspense: true,
+    },
+  )
   return {
-    data: data?.filter((item) => item.stageId === stageId),
+    data: data?.matrix,
     ...rest,
   }
 }

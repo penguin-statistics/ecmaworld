@@ -1,0 +1,14 @@
+{
+  "home": {
+    "title": "首页"
+  },
+  "report": {
+    "title": "汇报掉落"
+  },
+  "result.stages": {
+    "title": "作战内掉率"
+  },
+  "result.items": {
+    "title": "作战物品掉率"
+  }
+}

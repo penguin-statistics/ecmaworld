@@ -1,157 +1,131 @@
 import { Alert, Button, Dialog } from '@mui/material'
-import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid'
 
-import { Suspense, useState } from 'react'
+import { FC, Suspense, memo, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
+import { Column } from 'react-table'
 
-import { Matrix } from '../../../models/matrix'
-import { useI18nString } from '../../../utils/hooks/i18n/use-i18n-string'
-import { useItem } from '../../../utils/hooks/use-items'
-import { useMatrixByItem } from '../../../utils/hooks/use-matrix'
-import { useStage } from '../../../utils/hooks/use-stages'
+import { TimeRange } from 'components/foundational/TimeRange'
+import { DataTable } from 'components/visualize/DataTable/index'
+import {
+  ItemTransformedMatrix,
+  transformMatrixData,
+} from 'utils/dataset/transforms'
+import { useI18nString } from 'utils/hooks/i18n/use-i18n-string'
+import { useMatrixByItem } from 'utils/hooks/use-matrix'
+import { useStage } from 'utils/hooks/use-stages'
 
-function StageName(params: GridRenderCellParams<any, Matrix, any>) {
-  const { data } = useStage(params.row.stageId)
+function StageName({ stageId }: { stageId: string }) {
+  const { data } = useStage(stageId)
   const t = useI18nString()
 
-  return <Link to={'/stages/' + params.row.stageId}>{t(data?.code)}</Link>
+  return <Link to={'/result/stages/' + stageId}>{t(data?.code)}</Link>
 }
 
-function StageSanity(params: GridRenderCellParams<any, Matrix, any>) {
-  const { data } = useStage(params.row.stageId)
+function StageSanity({ stageId }: { stageId: string }) {
+  const invalidEl = <span style={{ opacity: 0.2 }}>--</span>
+  const { data } = useStage(stageId)
+  if (!data) return invalidEl
 
-  return <>{data?.apCost}</>
+  return <>{data.sanity}</>
 }
 
-function ItemData({ itemId }) {
-  const item = useItem(itemId)
-  const [open, setOpen] = useState(false)
-  const t = useI18nString()
+const StageSanityPerItem: FC<{
+  stageId: string
+  percentage: number
+}> = memo(({ stageId, percentage }) => {
+  const invalidEl = <span style={{ opacity: 0.2 }}>--</span>
+  const { data } = useStage(stageId)
+  if (!data) return invalidEl
 
-  return (
-    <>
-      <div>
-        Current selected item: {t(item.data?.name)} ({item.data?.itemId})
-      </div>
-      <Button
-        variant="outlined"
-        sx={{
-          marginTop: '1rem',
-          marginBottom: '1rem',
-        }}
-        onClick={() => setOpen(true)}
-      >
-        Show Item JSON
-      </Button>
-      <Dialog open={open} onClose={() => setOpen(false)}>
-        <pre>
-          <code>{JSON.stringify(item, null, 4)}</code>
-        </pre>
-      </Dialog>
-    </>
-  )
-}
+  const value = data.sanity / percentage
+  if (Number.isNaN(value) || !Number.isFinite(value)) return invalidEl
 
-function transformMatrixData(matrix: Matrix[]) {
-  return matrix.map((row) => {
-    return {
-      ...row,
-      id: row.stageId + row.itemId,
-      stageId: row.stageId,
-      percentage: row.quantity / row.times,
-    }
-  })
-}
+  return <>{value.toFixed(2)}</>
+})
+StageSanityPerItem.displayName = 'StageSanityPerItem'
 
 function ItemMatrixData({ itemId }) {
-  const item = useMatrixByItem(itemId)
+  const matrix = useMatrixByItem(itemId)
+  const { t } = useTranslation(['dataset', 'pages'])
 
-  const columns: GridColDef<Matrix>[] = [
-    {
-      field: 'stageId',
-      headerName: 'Stage',
-      width: 150,
-      renderCell: (params) => (
-        <Suspense
-          fallback={<span style={{ opacity: 0.2 }}>{params.row.stageId}</span>}
-        >
-          <StageName {...params} />
-        </Suspense>
-      ),
-    },
-    {
-      field: 'apCost',
-      headerName: 'AP Cost',
-      width: 150,
-      renderCell: (params) => (
-        <Suspense
-          fallback={<span style={{ opacity: 0.2 }}>{params.row.stageId}</span>}
-        >
-          <StageSanity {...params} />
-        </Suspense>
-      ),
-    },
-    {
-      field: 'percentage',
-      headerName: 'Percentage',
-      width: 150,
-      renderCell: ({ row }) =>
-        ((row.quantity / row.times) * 100).toFixed(2) + '%',
-    },
-    {
-      field: 'times',
-      headerName: 'Times',
-      width: 100,
-    },
-    {
-      field: 'quantity',
-      headerName: 'Quantity',
-      width: 100,
-    },
-  ]
-
-  return (
-    <>
-      <Alert
-        variant="outlined"
-        sx={{
-          marginBottom: '1rem',
-        }}
-      >
-        Got {item.data?.length} rows from Matrix by Item
-      </Alert>
-      {item.data && (
-        <DataGrid
-          density="compact"
-          sx={{
-            height: '80vh',
-          }}
-          autoPageSize
-          initialState={{
-            sorting: {
-              sortModel: [{ field: 'percentage', sort: 'desc' }],
-            },
-          }}
-          rows={transformMatrixData(item.data)}
-          columns={columns}
-        />
-      )}
-      {/* <ul>
-        {item.data?.map((row) => (
-          <li key={row.stageId}>
-            <Suspense
-              fallback={<span style={{ opacity: 0.2 }}>{row.stageId}</span>}
-            >
-              <StageName stageId={row.stageId} />
-            </Suspense>
-            {': '}
-            {row.quantity}/{row.times} (
-            {((row.quantity / row.times) * 100).toFixed(2)}%)
-          </li>
-        ))}
-      </ul> */}
-    </>
+  const columns = useMemo<Column<ItemTransformedMatrix>[]>(
+    () => [
+      {
+        id: 'stage',
+        accessor: 'stageId',
+        Header: t('dataset:table.header.stage.title'),
+        width: 170,
+        disableSortBy: true,
+        Cell: ({ row }) => (
+          <Suspense
+            fallback={
+              <span style={{ opacity: 0.2 }}>{row.original.stageId}</span>
+            }
+          >
+            <StageName stageId={row.original.stageId} />
+          </Suspense>
+        ),
+      },
+      {
+        accessor: 'quantity',
+        Header: t('dataset:table.header.quantity.title'),
+        headerTooltip: t('dataset:table.header.quantity.description'),
+        width: 70,
+      },
+      {
+        accessor: 'times',
+        Header: t('dataset:table.header.times.title'),
+        headerTooltip: t('dataset:table.header.times.description'),
+        width: 70,
+      },
+      {
+        accessor: 'percentage',
+        Header: t('dataset:table.header.percentage.title'),
+        headerTooltip: t('dataset:table.header.percentage.description'),
+        width: 100,
+        Cell: ({ row }) => (
+          <>{(row.original.percentage * 100).toFixed(2) + '%'}</>
+        ),
+      },
+      {
+        id: 'sanity',
+        accessor: 'stageId',
+        Header: t('dataset:table.header.sanity.title'),
+        headerTooltip: t('dataset:table.header.sanity.description'),
+        width: 100,
+        Cell: ({ row }) => <StageSanity stageId={row.original.stageId} />,
+      },
+      {
+        id: 'unitSanity',
+        accessor: 'stageId',
+        Header: t('dataset:table.header.unitSanity.title'),
+        headerTooltip: t('dataset:table.header.unitSanity.description'),
+        width: 100,
+        Cell: ({ row }) => (
+          <StageSanityPerItem
+            stageId={row.original.stageId}
+            percentage={row.original.percentage}
+          />
+        ),
+      },
+      {
+        accessor: 'start',
+        Header: t('dataset:table.header.timeRange.title'),
+        headerTooltip: t('dataset:table.header.timeRange.description'),
+        width: 180,
+        disableSortBy: true,
+        Cell: ({ row }) => (
+          <TimeRange start={row.original.start} end={row.original.end} />
+        ),
+      },
+    ],
+    [],
   )
+
+  const data = useMemo(() => transformMatrixData(matrix.data ?? []), [matrix])
+
+  return <>{matrix.data && <DataTable columns={columns} data={data} />}</>
 }
 
 function ItemDetailPage() {
@@ -159,11 +133,7 @@ function ItemDetailPage() {
 
   return (
     <>
-      <Link to="/">Home</Link>
-      <Link to="/items">Items</Link>
-      <h1>Item Detail Page</h1>
       <Suspense fallback={<div>Loading Data...</div>}>
-        <ItemData itemId={itemId} />
         <ItemMatrixData itemId={itemId} />
       </Suspense>
     </>

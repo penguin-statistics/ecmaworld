@@ -1,0 +1,15 @@
+.topbar {
+  backdrop-filter: blur(32px);
+}
+
+.navigations {
+  @apply flex pl-4 self-center;
+}
+
+.navigation {
+  @apply mr-2;
+}
+
+.active {
+  @apply font-bold;
+}

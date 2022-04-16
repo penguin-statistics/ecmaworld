@@ -2,7 +2,7 @@ import axios from 'axios'
 import camelcaseKeys from 'camelcase-keys'
 
 const fetcher = axios.create({
-  baseURL: 'https://penguin-stats.io',
+  baseURL: 'http://localhost:9010',
 })
 
 function transformResponse(response: any) {

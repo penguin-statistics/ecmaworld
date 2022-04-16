@@ -1,38 +1,20 @@
+import { Existence, I18nString } from './common'
+
 export interface Zone {
-  zoneId: string
-  zoneIndex: number
-  type: Type
-  subType: null | string
-  zoneName: ZoneNameI18N
+  pgZoneId: number
+  arkZoneId: string
+  index: number
+  category: StageCategory
+  type: string | null
+  name: I18nString
   existence: Existence
-  background: null | string
-  stages: string[]
+  background: string | null
 }
 
-export interface Existence {
-  CN: CN
-  JP: CN
-  KR: CN
-  US: CN
-}
-
-export interface CN {
-  exist: boolean
-  openTime?: number
-  closeTime?: number
-}
-
-export enum Type {
+export enum StageCategory {
   Activity = 'ACTIVITY',
   ActivityPermanent = 'ACTIVITY_PERMANENT',
   Gachabox = 'GACHABOX',
   Mainline = 'MAINLINE',
   Weekly = 'WEEKLY',
-}
-
-export interface ZoneNameI18N {
-  en: string
-  ja: string
-  ko: string
-  zh: string
 }

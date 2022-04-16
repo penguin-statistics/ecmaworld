@@ -1,11 +1,12 @@
 import type { Existence, I18nString } from './common'
 
 export interface Stage {
-  stageId: string
-  zoneId: string
+  pgStageId: number
+  arkStageId: string
+  zoneId: number
   stageType: StageType
   code: I18nString
-  apCost: number
+  sanity: number
   existence: Existence
   minClearTime: number | null
   dropInfos?: DropInfo[]

@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+build
+/test-results/
+/playwright-report/
+/playwright/.cache/
+.debug/
+
+.vscode/pwa-msedge/

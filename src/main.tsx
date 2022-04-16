@@ -1,19 +1,13 @@
-import React, { Suspense } from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
 
-import App from './App'
+import AppRoot from './App'
 import './utils/i18n'
 
 import './index.css'
 
-ReactDOM.render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Suspense fallback={<div>Loading root...</div>}>
-        <App />
-      </Suspense>
-    </BrowserRouter>
+    <AppRoot />
   </React.StrictMode>,
-  document.getElementById('root'),
 )

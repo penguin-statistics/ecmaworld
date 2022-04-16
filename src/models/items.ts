@@ -1,30 +1,27 @@
 import type { Existence, I18nString } from './common'
 
 export interface Item {
-  itemId: string
+  pgItemId: number
+  arkItemId: string
   name: I18nString
   existence: Existence
-  itemType: ItemType
   sortId: number
   rarity: number
-  groupID: null | string
-  spriteCoord?: number[]
-  alias: Alias
-  pron: Alias
+  group: ItemGroup
+  sprite: string
+  alias: ItemAlias
+  pron: ItemAlias
 }
 
-export interface Alias {
-  ja?: string[]
-  zh: string[]
-}
+export type ItemAlias = I18nString
 
-export enum ItemType {
-  ActivityItem = 'ACTIVITY_ITEM',
-  Arkplanner = 'ARKPLANNER',
+export enum ItemGroup {
+  Activity = 'ACTIVITY_ITEM',
+  ArkPlanner = 'ARKPLANNER',
   CardExp = 'CARD_EXP',
   Chip = 'CHIP',
-  Furn = 'FURN',
+  Furniture = 'FURN',
   LggShd = 'LGG_SHD',
   Material = 'MATERIAL',
-  Temp = 'TEMP',
+  Temporary = 'TEMP',
 }

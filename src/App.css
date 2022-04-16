@@ -3,7 +3,7 @@ button {
 }
 
 a {
-  display: inline-block; 
+  display: inline-block;
   color: #0070f3;
   text-decoration: none;
   padding: 0.25rem 0.5rem;
@@ -24,6 +24,3 @@ ul {
   line-height: 2;
 }
 
-body {
-  padding: 2rem;
-}

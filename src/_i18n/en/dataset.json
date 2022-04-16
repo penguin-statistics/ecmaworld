@@ -1,0 +1,50 @@
+{
+  "table": {
+    "header": {
+      "item": {
+        "title": "Item"
+      },
+      "stage": {
+        "title": "Stage"
+      },
+      "sanity": {
+        "title": "Sanity",
+        "description": "The Sanity required for the stage"
+      },
+      "quantity": {
+        "title": "Loots",
+        "description": "The sum of loots reported on this stage"
+      },
+      "times": {
+        "title": "Samples",
+        "description": "The sum of samples reported on this stage"
+      },
+      "percentage": {
+        "title": "Percentage",
+        "description": "Expected drop rate. Calculated as (Loots / Samples)"
+      },
+      "shortestClearTime": {
+        "title": "Shortest Clear Time",
+        "description": "The shortest possible time required to clear this stage, a.k.a. the time duration starting from the beginning of the combat to the appearance of the last enemy. Data source: [PRTS Wiki]({{prtsLink}})."
+      },
+      "unitSanity": {
+        "title": "Sanity per Item",
+        "description": "With the \"Percentage\" calculated, the expected amount of sanity required to acquire 1 item is calculated as (Sanity / (Loots / Samples))"
+      },
+      "unitTime": {
+        "title": "Time per Item",
+        "description": "With the \"Percentage\" calculated, the expected amount of time required to acquire 1 item is calculated as (ClearTime / (Loots / Samples))"
+      },
+      "timeRange": {
+        "title": "Time Range",
+        "description": "Due to the change of the drop table of this stage, the data in this row will only contain the data from the last change of the drop table, indicated as \"Time Range\""
+      }
+    }
+  },
+  "timeRange": {
+    "inBetween": "{{ start }} ~ {{ end }}",
+    "toPresent": "{{ start }} until now",
+    "endsAt": "Before {{ end }}",
+    "unknown": "Unknown"
+  }
+}

@@ -1,17 +1,31 @@
+import { useMemo } from 'react'
 import useSWR from 'swr'
 
-import { Zone } from '../../models/zones'
+import { InitResponse } from 'models/init'
+import { Zone } from 'models/zones'
 
 export const useZones = () => {
-  return useSWR<Zone[]>('/PenguinStats/api/v2/zones', {
+  const { data, ...rest } = useSWR<InitResponse>('/api/v3-alpha/init', {
     suspense: true,
   })
+  return {
+    data: data?.zones,
+    ...rest,
+  }
 }
 
 export const useZone = (zoneId?: string) => {
   const { data, ...rest } = useZones()
+  const map = useMemo(() => {
+    const map = new Map<string, Zone>()
+    data?.forEach((zone) => {
+      map.set(zone.arkZoneId, zone)
+    })
+    return map
+  }, [data])
+
   return {
-    data: data?.find((item) => item.zoneId === zoneId),
+    data: zoneId ? map.get(zoneId) : undefined,
     ...rest,
   }
 }

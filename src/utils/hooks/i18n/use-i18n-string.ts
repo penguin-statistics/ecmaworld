@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { I18nString } from '../../../models/common'
+import { I18nString } from 'models/common'
 
 export const useI18nString = () => {
   // useI18nString returns a transformer function that transforms the i18n string (an object, with key as locale ID and value as message string) into the current locale.
