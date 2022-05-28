@@ -1,4 +1,3 @@
-import mdiArrowDown from '@iconify/icons-mdi/arrow-down'
 import mdiArrowUp from '@iconify/icons-mdi/arrow-up'
 import { Icon } from '@iconify/react'
 import {
@@ -16,11 +15,7 @@ import clsx from 'clsx'
 import { useMemo } from 'react'
 import {
   Column,
-  useAbsoluteLayout,
-  useBlockLayout,
   useFilters,
-  useFlexLayout,
-  useGridLayout,
   usePagination,
   useSortBy,
   useTable,

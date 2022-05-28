@@ -1,5 +1,3 @@
-import { Alert } from '@mui/material'
-
 import { Suspense, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useParams } from 'react-router-dom'
