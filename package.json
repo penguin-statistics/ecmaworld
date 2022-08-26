@@ -44,7 +44,7 @@
     "@storybook/addon-links": "6.5.10",
     "@storybook/builder-vite": "0.1.35",
     "@storybook/react": "6.5.10",
-    "@storybook/testing-library": "0.0.11",
+    "@storybook/testing-library": "0.0.13",
     "@swc/cli": "0.1.57",
     "@swc/core": "1.2.179",
     "@trivago/prettier-plugin-sort-imports": "3.2.0",
