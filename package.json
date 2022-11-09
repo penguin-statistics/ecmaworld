@@ -19,7 +19,7 @@
     "axios": "0.26.1",
     "camelcase-keys": "7.0.2",
     "clsx": "1.2.1",
-    "dayjs": "1.11.5",
+    "dayjs": "1.11.6",
     "i18next": "21.6.16",
     "i18next-browser-languagedetector": "6.1.8",
     "i18next-http-backend": "1.4.1",
