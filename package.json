@@ -37,7 +37,7 @@
     "@babel/core": "7.18.0",
     "@iconify/icons-mdi": "1.2.32",
     "@iconify/react": "3.2.2",
-    "@playwright/test": "1.25.2",
+    "@playwright/test": "1.27.1",
     "@storybook/addon-actions": "6.5.10",
     "@storybook/addon-essentials": "6.5.10",
     "@storybook/addon-interactions": "6.5.10",
