@@ -21,7 +21,7 @@
     "clsx": "1.2.1",
     "dayjs": "1.11.5",
     "i18next": "21.6.16",
-    "i18next-browser-languagedetector": "6.1.5",
+    "i18next-browser-languagedetector": "6.1.8",
     "i18next-http-backend": "1.4.1",
     "jotai": "1.7.0",
     "react": "18.0.0",
