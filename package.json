@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.18.0",
-    "@iconify/icons-mdi": "1.2.32",
+    "@iconify/icons-mdi": "1.2.34",
     "@iconify/react": "3.2.2",
     "@playwright/test": "1.27.1",
     "@storybook/addon-actions": "6.5.10",
