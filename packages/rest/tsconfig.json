@@ -2,7 +2,7 @@
   "extends": "tsconfig/library.json",
   "include": [
     "."
-, "../rest/v3"  ],
+  ],
   "exclude": [
     "dist",
     "build",

@@ -1,9 +1,9 @@
-import { useGetInitQuery } from "@exusiai-dev/coredata/src/api/penguinV3Api";
+import { useGetInitQuery } from "@exusiai-dev/coredata/api/penguinV3Api";
 import {
   changeLanguage,
   changeServer,
-} from "@exusiai-dev/coredata/src/preferences";
-import { RootState } from "@exusiai-dev/coredata/src/store";
+} from "@exusiai-dev/coredata/preferences";
+import { RootState } from "@exusiai-dev/coredata/store";
 import { SiteLanguages } from "@exusiai-dev/rest/v3/i18n";
 import { Button, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
