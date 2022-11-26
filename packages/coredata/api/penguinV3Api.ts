@@ -2,8 +2,8 @@ import {
   ItemAggregatedDatasetResp,
   StageAggregatedDatasetResp,
 } from "@exusiai-dev/rest/v3/dataset";
-import { SiteServers } from "@exusiai-dev/rest/v3/i18n";
 import { InitResponse } from "@exusiai-dev/rest/v3/init";
+import { SiteServers } from "@exusiai-dev/rest/v3/variants";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { useAppSelector } from "../hooks";
 

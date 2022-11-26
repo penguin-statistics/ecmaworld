@@ -1,64 +1,16 @@
 import { useGetInitQuery } from "@exusiai-dev/coredata/api/penguinV3Api";
 import {
   changeLanguage,
-  changeServer,
+  changeServer
 } from "@exusiai-dev/coredata/preferences";
 import { RootState } from "@exusiai-dev/coredata/store";
-import { SiteLanguages } from "@exusiai-dev/rest/v3/i18n";
 import { Stage } from "@exusiai-dev/rest/v3/stages";
 import { Zone } from "@exusiai-dev/rest/v3/zones";
-import { Button, Menu, MenuItem } from "@mui/material";
-import { memo, useState } from "react";
+import { Button } from "@mui/material";
+import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
-
-const LanguageSelector = () => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const language = useSelector((state: RootState) => state.preference.language);
-  const dispatch = useDispatch();
-
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  return (
-    <div>
-      <Button
-        aria-controls={open ? "basic-menu" : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
-        variant="contained"
-      >
-        Language: {language}
-      </Button>
-
-      <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-        {(["zh", "en", "ja", "ko"] as SiteLanguages[]).map((lang) => (
-          <MenuItem
-            sx={{
-              "&": {
-                fontFamily: "JetBrains Mono",
-              },
-            }}
-            key={lang}
-            onClick={() => {
-              dispatch(changeLanguage(lang));
-              handleClose();
-            }}
-            selected={lang === language}
-          >
-            Change to Language: {lang}
-          </MenuItem>
-        ))}
-      </Menu>
-    </div>
-  );
-};
+import { LanguageSettings } from "./components/settings/LanguageSettings";
 
 const StageSelectorStageNavigator = ({ code }: { code: string }) => {
   return <Button variant="outlined">{code}</Button>;
@@ -133,13 +85,13 @@ const StageSelector = () => {
   );
 };
 
-const AppPreference = () => {
+const AppPreferences = () => {
   const server = useSelector((state: RootState) => state.preference.server);
   const dispatch = useDispatch();
   return (
     <>
       <h1>{server}</h1>
-      <LanguageSelector />
+      <LanguageSettings />
       <div className="card">
         <button
           onClick={() => {
@@ -172,12 +124,6 @@ const AppPreference = () => {
         >
           lang = en
         </button>
-
-        {/* <div>Total {stages.size} stages</div>
-        <div>main_01-07: {JSON.stringify(stages.get("main_01-07"))}</div>
-        <div>
-          randomMaterial_1 code: {stages.get("randomMaterial_1")?.localizedCode}
-        </div> */}
       </div>
     </>
   );
@@ -186,7 +132,7 @@ const AppPreference = () => {
 const App = () => {
   return (
     <div className="App">
-      <AppPreference />
+      <AppPreferences />
       <div className="card">
         <StageSelector />
       </div>

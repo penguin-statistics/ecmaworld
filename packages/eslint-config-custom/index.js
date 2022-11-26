@@ -1,7 +1,14 @@
 module.exports = {
-  extends: ["next", "turbo", "prettier"],
+  extends: [
+    "turbo",
+    "prettier",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+  ],
   rules: {
     "@next/next/no-html-link-for-pages": "off",
-    "react/jsx-key": "off",
+    "no-unused-vars": "off",
+    eqeqeq: "error",
   },
+  plugins: ["@typescript-eslint", "prettier", "import"],
 };

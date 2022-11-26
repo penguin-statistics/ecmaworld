@@ -1,0 +1,6 @@
+build
+coverage
+.prettierrc.cjs
+
+# import order matters for stylesheets in styles/index.ts
+styles/index.ts
