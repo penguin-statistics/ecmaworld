@@ -4,10 +4,13 @@ import { RootState } from '@exusiai-dev/coredata/store'
 import { Stage } from '@exusiai-dev/rest/v3/stages'
 import { Zone } from '@exusiai-dev/rest/v3/zones'
 import { Button } from '@mui/material'
+
 import { memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import './App.css'
+
 import { LanguageSettings } from './components/settings/LanguageSettings'
+
+import './App.css'
 
 const StageSelectorStageNavigator = ({ code }: { code: string }) => {
   return <Button variant="outlined">{code}</Button>

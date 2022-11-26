@@ -1,4 +1,5 @@
 import { Trend } from "./trends";
+
 export interface StageAggregatedDatasetResp {
   matrix: Matrix[];
   trends: Record<string, Trend>;

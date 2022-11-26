@@ -2,8 +2,10 @@ import { changeLanguage } from '@exusiai-dev/coredata/preferences'
 import { RootState } from '@exusiai-dev/coredata/store'
 import { SiteLanguages } from '@exusiai-dev/rest/v3/variants'
 import { IconButton, Menu, MenuItem } from '@mui/material'
+
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
 import './App.css'
 
 type LanguageOption = { id: SiteLanguages; name: string }

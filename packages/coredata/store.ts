@@ -1,7 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { setupListeners } from "@reduxjs/toolkit/query/react";
 import { penguinV3Api } from "./api/penguinV3Api";
 import { preferenceReducer } from "./preferences/index";
+import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query/react";
 
 export const store = configureStore({
   reducer: {
