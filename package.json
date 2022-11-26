@@ -9,7 +9,7 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md,json,js,jsx,cjs,html}\""
   },
   "devDependencies": {
     "@changesets/cli": "^2.25.1",

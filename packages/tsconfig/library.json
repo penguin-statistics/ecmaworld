@@ -3,9 +3,7 @@
   "display": "Pure Library",
   "extends": "./base.json",
   "compilerOptions": {
-    "lib": [
-      "ES2015"
-    ],
+    "lib": ["ES2015"],
     "module": "ESNext",
     "target": "es6",
     "experimentalDecorators": true,

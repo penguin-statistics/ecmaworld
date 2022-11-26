@@ -18,4 +18,4 @@ export async function unfetchAgent(path: string, options?: AgentOptions) {
   }).then((response) => response.json());
 }
 
-export type Agent = <T>(path: string, options?: AgentOptions) => Promise<T>
+export type Agent = <T>(path: string, options?: AgentOptions) => Promise<T>;
