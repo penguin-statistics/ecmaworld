@@ -2,11 +2,9 @@
   "name": "@exusiai-dev/coredata",
   "dependencies": {
     "@exusiai-dev/rest": "*",
+    "@reduxjs/toolkit": "^1.8.6",
     "@tanstack/react-query": "^4.13.4",
-    "mobx": "^6.6.2",
-    "mobx-keystone": "^1.1.1",
-    "mobx-persist-store": "^1.1.2",
-    "mobx-react-lite": "^3.4.0",
+    "react-redux": "^8.0.4",
     "tsconfig": "*",
     "unfetch": "^4.2.0"
   }

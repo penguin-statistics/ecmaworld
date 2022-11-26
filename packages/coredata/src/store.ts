@@ -1,11 +1,18 @@
-import { model, Model, prop } from 'mobx-keystone';
-import { Cache } from './models/cache';
-import { Preferences } from './models/preferences/index';
+import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query/react";
+import { penguinV3Api } from "./api/penguinV3Api";
+import { preferenceReducer } from "./preferences/index";
 
-@model('coredata/RootStore')
-export class RootStore extends Model({
-  cache: prop<Cache>(() => (new Cache({}))),
-  preferences: prop<Preferences>(() => (new Preferences({}))),
-}) {}
+export const store = configureStore({
+  reducer: {
+    preference: preferenceReducer,
+    [penguinV3Api.reducerPath]: penguinV3Api.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(penguinV3Api.middleware),
+});
 
-export const store = new RootStore({})
+setupListeners(store.dispatch);
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

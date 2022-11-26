@@ -1,14 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Pure Library",
+  "display": "Client Library (w/ DOM & JSX)",
   "extends": "./base.json",
   "compilerOptions": {
     "lib": [
-      "ES2015"
+      "ES2015",
+      "DOM",
+      "DOM.Iterable"
     ],
     "module": "ESNext",
     "target": "es6",
     "experimentalDecorators": true,
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "jsx": "react-jsx"
   }
 }
