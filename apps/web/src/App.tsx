@@ -5,8 +5,10 @@ import {
 } from "@exusiai-dev/coredata/preferences";
 import { RootState } from "@exusiai-dev/coredata/store";
 import { SiteLanguages } from "@exusiai-dev/rest/v3/i18n";
+import { Stage } from "@exusiai-dev/rest/v3/stages";
+import { Zone } from "@exusiai-dev/rest/v3/zones";
 import { Button, Menu, MenuItem } from "@mui/material";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 
@@ -58,8 +60,44 @@ const LanguageSelector = () => {
   );
 };
 
+const StageSelectorStageNavigator = ({ code }: { code: string }) => {
+  return <Button variant="outlined">{code}</Button>;
+};
+
+const StageSelectorZoneSegment = memo(
+  ({ zone, stages }: { zone: Zone; stages: Stage[] }) => {
+    const language = useSelector(
+      (state: RootState) => state.preference.language
+    );
+
+    return (
+      <div>
+        <h3>{zone.name[language]}</h3>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "0.5rem",
+          }}
+        >
+          {stages
+            .filter((stage) => stage.zoneId === zone.pgZoneId)
+            .map((stage) => (
+              <StageSelectorStageNavigator
+                key={stage.pgStageId}
+                code={stage.code[language]}
+              />
+            ))}
+        </div>
+      </div>
+    );
+  }
+);
+StageSelectorZoneSegment.displayName = "memo(StageSelectorZoneSegment)";
+
 const StageSelector = () => {
   const { data, error, isLoading } = useGetInitQuery();
+
   if (error) {
     if ("status" in error) {
       const errMsg =
@@ -84,42 +122,39 @@ const StageSelector = () => {
       }}
     >
       {data?.zones.map((zone) => (
-        <div>
-          <h3>{zone.name.zh}</h3>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "0.5rem",
-            }}
-          >
-            {data?.stages
-              .filter((stage) => stage.zoneId === zone.pgZoneId)
-              .map((zone) => (
-                <Button variant="outlined">{zone.code.zh}</Button>
-              ))}
-          </div>
-        </div>
+        <StageSelectorZoneSegment
+          zone={zone}
+          stages={data?.stages.filter(
+            (stage) => stage.zoneId === zone.pgZoneId
+          )}
+        />
       ))}
     </div>
   );
 };
 
-const App = () => {
+const AppPreference = () => {
   const server = useSelector((state: RootState) => state.preference.server);
   const dispatch = useDispatch();
-
   return (
-    <div className="App">
+    <>
       <h1>{server}</h1>
       <LanguageSelector />
       <div className="card">
         <button
           onClick={() => {
+            dispatch(changeServer("CN"));
+          }}
+        >
+          server = CN
+        </button>
+
+        <button
+          onClick={() => {
             dispatch(changeServer("US"));
           }}
         >
-          revalidate
+          server = US
         </button>
 
         <button
@@ -127,7 +162,7 @@ const App = () => {
             dispatch(changeLanguage("zh"));
           }}
         >
-          change language: zh
+          lang = zh
         </button>
 
         <button
@@ -135,7 +170,7 @@ const App = () => {
             dispatch(changeLanguage("en"));
           }}
         >
-          change language: en
+          lang = en
         </button>
 
         {/* <div>Total {stages.size} stages</div>
@@ -144,6 +179,14 @@ const App = () => {
           randomMaterial_1 code: {stages.get("randomMaterial_1")?.localizedCode}
         </div> */}
       </div>
+    </>
+  );
+};
+
+const App = () => {
+  return (
+    <div className="App">
+      <AppPreference />
       <div className="card">
         <StageSelector />
       </div>

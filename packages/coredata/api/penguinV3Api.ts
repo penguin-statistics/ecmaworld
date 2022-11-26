@@ -5,6 +5,7 @@ import {
 import { SiteServers } from "@exusiai-dev/rest/v3/i18n";
 import { InitResponse } from "@exusiai-dev/rest/v3/init";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { useAppSelector } from "../hooks";
 
 interface AggregatedDatasetQueryArgs {
   source: "global" | "personal";
@@ -24,7 +25,7 @@ export interface StageAggregatedDatasetQueryArgs
 export const penguinV3Api = createApi({
   reducerPath: "penguinV3Api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://penguin-stats.io/api/v3alpha",
+    baseUrl: "http://localhost:9010/api/v3alpha",
     prepareHeaders: (headers, { getState }) => {
       // const server = (getState() as RootState).preference.server;
       // headers.set("X-Penguin-Server", server);
@@ -58,3 +59,27 @@ export const {
   useGetItemAggregatedDatasetQuery,
   useGetStageAggregatedDatasetQuery,
 } = penguinV3Api;
+
+export const usePreferredGetItemAggregatedDatasetQuery = (
+  itemId: ItemAggregatedDatasetQueryArgs["itemId"]
+) => {
+  const server = useAppSelector((state) => state.preference.server);
+
+  return useGetItemAggregatedDatasetQuery({
+    source: "global",
+    server,
+    itemId,
+  });
+};
+
+export const usePreferredGetStageAggregatedDatasetQuery = (
+  stageId: StageAggregatedDatasetQueryArgs["stageId"]
+) => {
+  const server = useAppSelector((state) => state.preference.server);
+
+  return useGetStageAggregatedDatasetQuery({
+    source: "global",
+    server,
+    stageId,
+  });
+};
