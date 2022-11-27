@@ -1,14 +1,14 @@
 import { useGetInitQuery } from '@exusiai-dev/coredata/api/penguinV3Api'
-import { changeLanguage, changeServer } from '@exusiai-dev/coredata/preferences'
 import { RootState } from '@exusiai-dev/coredata/store'
 import { Stage } from '@exusiai-dev/rest/v3/stages'
 import { Zone } from '@exusiai-dev/rest/v3/zones'
 import { Button } from '@mui/material'
 
 import { memo } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { LanguageSettings } from './components/settings/LanguageSettings'
+import { ServerSettings } from './components/settings/ServerSettings'
 
 import './App.css'
 
@@ -85,46 +85,11 @@ const StageSelector = () => {
 }
 
 const AppPreferences = () => {
-  const server = useSelector((state: RootState) => state.preference.server)
-  const dispatch = useDispatch()
   return (
-    <>
-      <h1>{server}</h1>
+    <div className="flex gap-2 justify-center">
+      <ServerSettings />
       <LanguageSettings />
-      <div className="card">
-        <button
-          onClick={() => {
-            dispatch(changeServer('CN'))
-          }}
-        >
-          server = CN
-        </button>
-
-        <button
-          onClick={() => {
-            dispatch(changeServer('US'))
-          }}
-        >
-          server = US
-        </button>
-
-        <button
-          onClick={() => {
-            dispatch(changeLanguage('zh'))
-          }}
-        >
-          lang = zh
-        </button>
-
-        <button
-          onClick={() => {
-            dispatch(changeLanguage('en'))
-          }}
-        >
-          lang = en
-        </button>
-      </div>
-    </>
+    </div>
   )
 }
 

@@ -1,73 +1,56 @@
-# Turborepo starter
+# Penguin Statistics - ECMAWorld
 
-This is an official npm starter turborepo.
+A monorepo for everything related with ECMAScript (JavaScript) at Penguin Statistics! _What an ECMAWorld we live in._
 
-## What's inside?
+## Apps and Packages
 
-This turborepo uses [npm](https://www.npmjs.com/) as a package manager. It includes the following packages/apps:
+### Apps
 
-### Apps and Packages
+- `apps/widget`: The widget app for Penguin Statistics.
+- `apps/frontend`: The v4 frontend app for Penguin Statistics.
 
-- `docs`: a [Next.js](https://nextjs.org) app
-- `web`: another [Next.js](https://nextjs.org) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+### Packages
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- `packages/coredata`: A data layer for using Penguin Statistics dataset with minimum integration effort.
+- `packages/uikit`: A set of reusable UI components across different projects, such as the widget and main site.
+- `packages/preferences`: A user preference access layer for all projects to access user data reliably and easily.
+- `packages/meta`: Metadata, commonly used constants, conversions and utils for all projects.
+- `packages/design`: Palette, typography, design assets and other shared visual resources for all projects.
+- `packages/telemetry`: Third-party integrations and telemetry/tracing tools abstraction layer.
+- `packages/widget`: A ready to integrate, Penguin Statistics Widget implementation in React (without actual ReactDOM rendering: left for `apps/widget`).
+- `packages/widget-loader`: A lightweight loader for the Penguin Statistics Widget, ready to be embedded in any website.
 
-### Utilities
+### Source-related Tools
 
-This turborepo has some additional tools already setup for you:
+- `packages/eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `packages/tsconfig`: `tsconfig.json`s used throughout the monorepo
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-npm run build
-```
+## Development
 
 ### Develop
 
 To develop all apps and packages, run the following command:
 
-```
-cd my-turborepo
+```bash
 npm run dev
 ```
 
-### Remote Caching
+### Build
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+To build all apps and packages, run the following command:
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
-
-```
-npx turbo link
+```bash
+npm run build
 ```
 
 ## Useful Links
 
-Learn more about the power of Turborepo:
+Learn more about Turborepo, the monorepo tool used in this project: [Documentation](https://turbo.build/repo/docs) / [CLI Usage](https://turbo.build/docs/reference/command-line-reference)
 
-- [Pipelines](https://turborepo.org/docs/core-concepts/pipelines)
-- [Caching](https://turborepo.org/docs/core-concepts/caching)
-- [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching)
-- [Scoped Tasks](https://turborepo.org/docs/core-concepts/scopes)
-- [Configuration Options](https://turborepo.org/docs/reference/configuration)
-- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)
+## License
+
+[MIT](LICENSE)
+
+## Security
+
+If you found a vulnerability in such repository, please send an email to the project owner, Alviss_Reimu (`alvissreimu at gmail`). We would like to kindly ask you to not disclose about the detail of the vulnerability to the public before we have released a fix. Thanks for making Penguin Statistics a better site ;)

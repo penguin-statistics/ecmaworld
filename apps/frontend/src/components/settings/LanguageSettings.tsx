@@ -1,12 +1,10 @@
 import { changeLanguage } from '@exusiai-dev/coredata/preferences'
 import { RootState } from '@exusiai-dev/coredata/store'
 import { SiteLanguages } from '@exusiai-dev/rest/v3/variants'
-import { IconButton, Menu, MenuItem } from '@mui/material'
+import { Button, Menu, MenuItem } from '@mui/material'
 
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
-import './App.css'
 
 type LanguageOption = { id: SiteLanguages; name: string }
 const LANGUAGE_OPTIONS: LanguageOption[] = [
@@ -31,7 +29,9 @@ const LANGUAGE_OPTIONS: LanguageOption[] = [
 export const LanguageSettings = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
-  const language = useSelector((state: RootState) => state.preference.language)
+  const activeLanguageId = useSelector(
+    (state: RootState) => state.preference.language,
+  )
   const dispatch = useDispatch()
 
   const handleActivatorClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -41,33 +41,38 @@ export const LanguageSettings = () => {
     setAnchorEl(null)
   }
 
+  const activeLanguage = useMemo(
+    () => LANGUAGE_OPTIONS.find((option) => option.id === activeLanguageId),
+    [activeLanguageId],
+  )
+
+  useEffect(() => {
+    document.documentElement.lang = activeLanguage?.id ?? 'en'
+  }, [activeLanguage])
+
   return (
     <div>
-      <IconButton
+      <Button
+        variant="contained"
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="menu"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleActivatorClick}
       >
-        Language: {language}
-      </IconButton>
+        {activeLanguage?.name}
+      </Button>
 
       <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
         {LANGUAGE_OPTIONS.map((lang) => (
           <MenuItem
-            sx={{
-              '&': {
-                fontFamily: 'JetBrains Mono',
-              },
-            }}
             key={lang.id}
             onClick={() => {
-              dispatch(changeLanguage(lang))
+              dispatch(changeLanguage(lang.id))
               handleClose()
             }}
-            selected={lang === language}
+            selected={lang.id === activeLanguageId}
           >
-            Change to Language: {lang.name}
+            {lang.name}
           </MenuItem>
         ))}
       </Menu>

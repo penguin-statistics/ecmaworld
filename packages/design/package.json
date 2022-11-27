@@ -1,0 +1,8 @@
+{
+  "name": "@exusiai-dev/design",
+  "dependencies": {
+    "tsconfig": "*"
+  },
+  "main": "index.ts",
+  "type": "module"
+}

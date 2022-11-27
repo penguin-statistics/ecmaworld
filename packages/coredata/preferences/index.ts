@@ -1,4 +1,4 @@
-import { SiteLanguages, SiteServers } from "@exusiai-dev/rest/v3/i18n";
+import { SiteLanguages, SiteServers } from "@exusiai-dev/rest/v3/variants";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 
