@@ -21,7 +21,7 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
-    "next-transpile-modules": "^9.1.0"
+    "next-transpile-modules": "^10.0.0"
   },
   "packageManager": "npm@8.11.0"
 }
