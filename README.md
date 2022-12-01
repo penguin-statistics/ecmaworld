@@ -1,3 +1,7 @@
+<img src="https://penguin.upyun.galvincdn.com/logos/penguin_stats_logo.png"
+     alt="Penguin Statistics - Logo"
+     width="96px" />
+
 # Penguin Statistics - ECMAWorld
 
 A monorepo for everything related to ECMAScript (JavaScript) at Penguin Statistics! _What an ECMAWorld we live in._
