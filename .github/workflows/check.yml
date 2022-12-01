@@ -1,0 +1,24 @@
+name: 'style: Code Style Checks'
+
+on:
+  # trigger on any pull requests
+  pull_request:
+    branches:
+      - '**'
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+
+      - name: 'Setup Node.js'
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/hydrogen' # should match .nvmrc
+

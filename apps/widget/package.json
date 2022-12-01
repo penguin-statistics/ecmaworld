@@ -16,12 +16,15 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "eslint": "7.32.0",
     "eslint-config-custom": "*",
-    "tsconfig": "*",
     "@types/node": "^18.0.0",
+    "@next/eslint-plugin-next": "^13.0.5",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "eslint": "7.32.0",
+    "eslint-config-penguin-react": "*",
+    "eslint-plugin-react": "^7.31.11",
+    "tsconfig": "*",
     "typescript": "^4.5.3"
   }
 }

@@ -26,7 +26,7 @@ A monorepo for everything related to ECMAScript (JavaScript) at Penguin Statisti
 
 ### Source-related Tools
 
-- `packages/eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `packages/eslint-config-penguin`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `packages/tsconfig`: `tsconfig.json`s used throughout the monorepo
 
 ## Development

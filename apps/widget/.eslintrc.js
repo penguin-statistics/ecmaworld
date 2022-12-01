@@ -1,4 +1,4 @@
 module.exports = {
   root: true,
-  extends: ["custom"],
-};
+  extends: ['penguin-react', 'plugin:@next/next/recommended'],
+}
