@@ -2,6 +2,9 @@
   "name": "tsconfig",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "lint": "eslint --ext .json ."
+  },
   "files": [
     "base.json",
     "nextjs.json",
