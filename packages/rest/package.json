@@ -2,6 +2,6 @@
   "name": "@exusiai-dev/rest",
   "dependencies": {
     "tsconfig": "*",
-    "unfetch": "^4.2.0"
+    "unfetch": "^5.0.0"
   }
 }
