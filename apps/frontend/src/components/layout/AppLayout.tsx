@@ -1,10 +1,10 @@
 import { AppBar, Toolbar } from '@mui/material'
 
 import { Outlet } from 'react-router-dom'
-import { AppNavigation } from 'src/components/layout/AppNavigation'
-import AppearanceSettings from 'src/components/settings/AppearanceSettings'
 
-import logo from '../../assets/logo.png?url'
+import logo from '../../assets/logo.png'
+import { AppNavigation } from '../../components/layout/AppNavigation'
+import AppearanceSettings from '../../components/settings/AppearanceSettings'
 import { LanguageSettings } from '../settings/LanguageSettings'
 import { ServerSettings } from '../settings/ServerSettings'
 

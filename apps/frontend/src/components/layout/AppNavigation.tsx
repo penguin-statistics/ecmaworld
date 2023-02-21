@@ -9,8 +9,7 @@ import {
 
 import { useState } from 'react'
 import { useMatch } from 'react-router-dom'
-
-import { IconifyIcon } from 'components/foundational/IconifyIcon'
+import { IconifyIcon } from 'src/components/foundational/IconifyIcon'
 
 interface NavigationRouteType {
   name: string
