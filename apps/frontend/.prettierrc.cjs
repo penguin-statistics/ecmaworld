@@ -7,7 +7,7 @@ module.exports = {
   importOrder: [
     '^@.*/(.*)$',
     '<THIRD_PARTY_MODULES>',
-    '^(App|components|pages|store|utils|stories|models|store|constants|assets|layouts|_i18n)',
+    '^(src)',
     '^[./].*(?<![.]css)$',
     '^[./].*(?<=[.]css)$',
   ],
