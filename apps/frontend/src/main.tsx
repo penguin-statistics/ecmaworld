@@ -1,8 +1,8 @@
 import { store } from '@exusiai-dev/coredata/store'
 import { CssBaseline, StyledEngineProvider } from '@mui/material'
 
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 
 import { appRootElement } from './config'
@@ -11,8 +11,8 @@ import { AppThemeProvider } from './theme'
 
 import './index.css'
 
-ReactDOM.createRoot(appRootElement).render(
-  <React.StrictMode>
+createRoot(appRootElement).render(
+  <StrictMode>
     <StyledEngineProvider injectFirst>
       <AppThemeProvider>
         <Provider store={store}>
@@ -21,5 +21,5 @@ ReactDOM.createRoot(appRootElement).render(
         </Provider>
       </AppThemeProvider>
     </StyledEngineProvider>
-  </React.StrictMode>,
+  </StrictMode>,
 )

@@ -3,6 +3,7 @@ module.exports = {
   plugins: ['jsx-a11y'],
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
+    'react/prop-types': 'off',
   },
   settings: {
     react: {

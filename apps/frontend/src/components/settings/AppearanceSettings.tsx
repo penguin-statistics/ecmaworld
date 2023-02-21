@@ -2,9 +2,9 @@ import mdiDark from '@iconify/icons-mdi/brightness-2'
 import mdiLight from '@iconify/icons-mdi/brightness-7'
 import { IconButton } from '@mui/material'
 
-import { IconifyIcon } from 'components/foundational/IconifyIcon'
+import { useAppAppearance } from 'theme'
 
-import { useAppAppearance } from '../../theme'
+import { IconifyIcon } from 'components/foundational/IconifyIcon'
 
 export default function AppearanceSettings() {
   const [appearance, setAppearance] = useAppAppearance()

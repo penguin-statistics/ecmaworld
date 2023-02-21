@@ -10,7 +10,12 @@ module.exports = {
   rules: {
     'no-unused-vars': 'off',
     eqeqeq: 'error',
+    'import/no-unresolved': 'error',
   },
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'prettier', 'import', 'turbo'],
+  settings: {
+    typescript: true,
+    node: true,
+  },
 }

@@ -6,5 +6,6 @@
   "baseBranches": [
     "dev"
   ],
-  "prConcurrentLimit": 5
+  "prConcurrentLimit": 5,
+  "platformAutomerge": true
 }

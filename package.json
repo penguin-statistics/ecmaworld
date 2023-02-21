@@ -8,7 +8,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
+    "lint": "eslint --ext .ts,.tsx,.js,.jsx,.cjs,.cts && turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md,json,js,jsx,cjs,html}\""
   },
   "devDependencies": {

@@ -27,6 +27,8 @@ const LinkBehavior = forwardRef<
   return <RouterLink ref={ref} to={href} {...other} />
 })
 
+LinkBehavior.displayName = 'LinkBehavior'
+
 const createCustomizedTheme = (mode: PaletteMode) =>
   createTheme({
     components: {

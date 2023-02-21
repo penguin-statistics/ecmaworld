@@ -25,6 +25,6 @@
     "eslint-config-penguin-react": "*",
     "eslint-plugin-react": "^7.31.11",
     "tsconfig": "*",
-    "typescript": "^4.5.3"
+    "typescript": "^4.9.4"
   }
 }
