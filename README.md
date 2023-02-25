@@ -58,3 +58,9 @@ Learn more about Turborepo, the monorepo tool used in this project: [Documentati
 ## Security
 
 If you find a vulnerability in the repository, please email the project owner, Alviss_Reimu (`alvissreimu at gmail`). We kindly ask you not to disclose the detail of the vulnerability to the public before we have released a fix. Thanks for making Penguin Statistics a better site ;)
+
+## Contributors
+
+This project is made possible by the following contributors. Contributions are always welcome!
+
+[![Contributors](https://contrib.rocks/image?repo=penguin-statistics/ecmaworld)](https://github.com/penguin-statistics/ecmaworld/graphs/contributors)
