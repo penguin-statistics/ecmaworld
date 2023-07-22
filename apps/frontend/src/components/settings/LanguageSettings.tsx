@@ -1,6 +1,6 @@
-import { changeLanguage } from '@exusiai-dev/coredata/preferences'
-import { RootState } from '@exusiai-dev/coredata/store'
-import { SiteLanguages } from '@exusiai-dev/rest/v3/variants'
+import { changeLanguage } from '@exusiai/coredata/preferences'
+import { RootState } from '@exusiai/coredata/store'
+import { SiteLanguages } from '@exusiai/rest/v3/variants'
 import { Button, Menu, MenuItem } from '@mui/material'
 
 import { useEffect, useMemo, useState } from 'react'

@@ -1,7 +1,7 @@
-import { useGetInitQuery } from '@exusiai-dev/coredata/api/penguinV3Api'
-import { RootState } from '@exusiai-dev/coredata/store'
-import { Stage } from '@exusiai-dev/rest/v3/stages'
-import { Zone } from '@exusiai-dev/rest/v3/zones'
+import { useGetInitQuery } from '@exusiai/coredata/api/penguinV3Api'
+import { RootState } from '@exusiai/coredata/store'
+import { Stage } from '@exusiai/rest/v3/stages'
+import { Zone } from '@exusiai/rest/v3/zones'
 import { Button } from '@mui/material'
 
 import { memo } from 'react'

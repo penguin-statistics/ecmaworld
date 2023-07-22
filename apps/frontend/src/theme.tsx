@@ -1,4 +1,4 @@
-import { palette } from '@exusiai-dev/design/index'
+import { palette } from '@exusiai/design/index'
 import {
   PaletteMode,
   ThemeProvider,

@@ -1,6 +1,6 @@
-import { changeServer } from '@exusiai-dev/coredata/preferences'
-import { RootState } from '@exusiai-dev/coredata/store'
-import { SiteServers } from '@exusiai-dev/rest/v3/variants'
+import { changeServer } from '@exusiai/coredata/preferences'
+import { RootState } from '@exusiai/coredata/store'
+import { SiteServers } from '@exusiai/rest/v3/variants'
 import { Button, Menu, MenuItem } from '@mui/material'
 
 import { useEffect, useState } from 'react'

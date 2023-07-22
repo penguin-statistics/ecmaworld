@@ -1,4 +1,4 @@
-import { store } from '@exusiai-dev/coredata/store'
+import { store } from '@exusiai/coredata/store'
 import { CssBaseline, StyledEngineProvider } from '@mui/material'
 
 import { StrictMode } from 'react'

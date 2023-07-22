@@ -1,5 +1,5 @@
 {
-  "name": "@exusiai-dev/app-frontend",
+  "name": "@exusiai/app-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,7 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@exusiai-dev/coredata": "*",
+    "@exusiai/coredata": "*",
     "@iconify/icons-mdi": "^1.2.34",
     "@mui/material": "^5.10.12",
     "react": "^18.2.0",
