@@ -14,7 +14,7 @@
     "eslint-config-penguin-react": "*",
     "react": "^18.2.0",
     "tsconfig": "*",
-    "typescript": "^4.9.4"
+    "typescript": "^5.0.0"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
