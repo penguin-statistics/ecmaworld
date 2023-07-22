@@ -1,11 +1,11 @@
-import unfetch from "unfetch";
+import unfetch from 'unfetch'
 
-const PENGUIN_BASE_URL = "https://penguin-stats.io/api/v3alpha";
+const PENGUIN_BASE_URL = 'https://penguin-stats.io/api/v3alpha'
 
 interface AgentOptions {
-  method?: string;
-  headers?: Record<string, string>;
-  credentials?: "include" | "omit";
+  method?: string
+  headers?: Record<string, string>
+  credentials?: 'include' | 'omit'
 }
 
 export async function unfetchAgent(path: string, options?: AgentOptions) {
@@ -13,9 +13,9 @@ export async function unfetchAgent(path: string, options?: AgentOptions) {
     ...options,
     headers: {
       ...options?.headers,
-      Accept: "application/vnd.penguin.v3+json",
+      Accept: 'application/vnd.penguin.v3+json',
     },
-  }).then((response) => response.json());
+  }).then((response) => response.json())
 }
 
-export type Agent = <T>(path: string, options?: AgentOptions) => Promise<T>;
+export type Agent = <T>(path: string, options?: AgentOptions) => Promise<T>

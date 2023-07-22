@@ -1,11 +1,11 @@
-import { SiteLanguages, SiteServers } from "./variants";
+import { SiteLanguages, SiteServers } from './variants'
 
-export type Existence = Record<SiteServers, ExistenceElement>;
+export type Existence = Record<SiteServers, ExistenceElement>
 
 export interface ExistenceElement {
-  exist: boolean;
-  openTime?: number;
-  closeTime?: number;
+  exist: boolean
+  openTime?: number
+  closeTime?: number
 }
 
-export type I18nString = Record<SiteLanguages, string>;
+export type I18nString = Record<SiteLanguages, string>

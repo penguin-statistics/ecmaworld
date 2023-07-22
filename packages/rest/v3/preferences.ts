@@ -1,6 +1,6 @@
-import { SiteLanguages, SiteServers } from "./variants";
+import { SiteLanguages, SiteServers } from './variants'
 
 export interface Preferences {
-  language: SiteLanguages;
-  server: SiteServers;
+  language: SiteLanguages
+  server: SiteServers
 }
