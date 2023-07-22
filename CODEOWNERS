@@ -1,0 +1,4 @@
+# only allow core team members to edit sensitive files
+.github @penguin-statistics/core
+LICENSE @penguin-statistics/core
+*.md @penguin-statistics/core
